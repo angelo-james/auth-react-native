@@ -11,6 +11,7 @@ class LoginForm extends Component {
     loading: false
   }
 
+  //on press helper function uses firebase to authenticate the user if no user tries to create user if user exist shows authentication failure message
   onButtonPress() {
     const { email, password } = this.state;
 
@@ -28,13 +29,14 @@ class LoginForm extends Component {
       })
   }
 
+  //toggle loading spinner and error message if failed login attempt
   onLoginFail() {
     this.setState({
       error: 'Authentication Failed.',
       loading: false
     })
   }
-
+  //toggle loading spinner and clears state if login success
   onLoginSuccess() {
     this.setState({
       email: '',
@@ -43,7 +45,7 @@ class LoginForm extends Component {
       error: ''
     })
   }
-
+  //renders the button to show and hide when clicked
   renderButton() {
     if (this.state.loading) {
       return <Spinner size="small" />
